@@ -1,2 +1,1 @@
-# Lab3
-This is a placeholder file for the Lab3 directory.
+this folder contains the activities for Lab 3
