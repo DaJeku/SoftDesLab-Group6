@@ -1,10 +1,10 @@
 import sqlite3
 
-# Step 1: Connect to SQLite database (it will create the database if it doesn't exist)
+
 conn = sqlite3.connect('adventure_tours.db')
 cursor = conn.cursor()
 
-# Step 2: Create PARTICIPANT table
+
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS PARTICIPANT (
     p_number INTEGER PRIMARY KEY,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS ADVENTURE_CLASS (
 );
 ''')
 
-# Create ENROLLMENT table
+
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS ENROLLMENT (
     p_number INTEGER,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS ENROLLMENT (
 );
 ''')
 
-# Step 3: Insert example data into PARTICIPANT table
+
 cursor.execute('''
 INSERT INTO PARTICIPANT (p_number, last_name, first_name, address, city, state, postal_code, telephone_number, dob)
 VALUES
@@ -49,7 +49,7 @@ VALUES
 (2, 'Smith', 'Jane', '456 Oak St', 'Chicago', 'IL', '60601', '555-5678', '1990-08-22');
 ''')
 
-# Insert example data into ADVENTURE_CLASS table
+
 cursor.execute('''
 INSERT INTO ADVENTURE_CLASS (class_number, class_description, max_people, class_fee)
 VALUES
@@ -65,10 +65,8 @@ VALUES
 (2, 102, '2025-02-02');
 ''')
 
-# Step 4: Commit the changes to the database
 conn.commit()
 
-# Step 5: Query and display participant details (a)
 print("Participant Details:")
 cursor.execute('''
 SELECT p_number, last_name, first_name, address, city, state, postal_code, telephone_number, dob
@@ -78,7 +76,7 @@ participants = cursor.fetchall()
 for participant in participants:
     print(participant)
 
-# Step 6: Query and display adventure class details (b)
+
 print("\nAdventure Class Details:")
 cursor.execute('''
 SELECT class_number, class_description, max_people, class_fee
@@ -88,7 +86,7 @@ classes = cursor.fetchall()
 for class_info in classes:
     print(class_info)
 
-# Step 7: Query and display participant enrollment details (c)
+
 print("\nEnrollment Details (for each participant enrolled in classes):")
 cursor.execute('''
 SELECT p.p_number, p.last_name, p.first_name, ac.class_number, ac.class_description, e.class_date
@@ -101,7 +99,7 @@ enrollments = cursor.fetchall()
 for enrollment in enrollments:
     print(enrollment)
 
-# Step 8: Query and display class participants details (d)
+
 print("\nClass Participants (for each class):")
 cursor.execute('''
 SELECT e.class_date, ac.class_number, ac.class_description, p.p_number, p.last_name, p.first_name
@@ -114,5 +112,5 @@ class_participants = cursor.fetchall()
 for class_participant in class_participants:
     print(class_participant)
 
-# Step 9: Close the connection to the database
+
 conn.close()
