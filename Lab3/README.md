@@ -1,2 +1,2 @@
-#this folder contains the activities for Lab 3
+#this folder contains the activities for Lab 2
  
