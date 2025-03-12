@@ -17,7 +17,7 @@ salary_manager = SalaryManager()
 # Root route for welcome message
 @app.route('/', methods=['GET'])
 def index():
-    return jsonify({"message": "Welcome to the WageWise API!"}), 200
+    return jsonify({"message": "Welcome to the Payflow API!"}), 200
 
 # Route to get all employees
 @app.route('/api/employees', methods=['GET'])
